@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Fusion - Gesture Recognition</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Linking styles.css -->
+    <!-- Add the MediaPipe Hands CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+</head>
+<body>
+    <!-- Background Video -->
+    <div class="background-container">
+        <video autoplay muted loop id="background-video">
+            <source src="background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-spinner"></div>
+
+    <div class="container">
+        <header>
+            <h1>Sign Fusion</h1>
+            <p>AI-Driven Hand Gesture Recognition for Assistive Communication</p>
+        </header>
+
+        <!-- Video Section -->
+        <div class="video-section">
+            <video id="gesture-video" autoplay></video>
+        </div>
+
+        <!-- Controls (Start & Stop Buttons) -->
+        <div class="controls">
+            <button id="start-btn">Start Recognition</button>
+            <button id="stop-btn" disabled>Stop Recognition</button>
+            <button id="run-final-pred-btn">Run Final Prediction</button>
+        </div>
+
+        <!-- Recognized Text Output -->
+        <div class="output-section">
+            <h3>Recognized Gesture:</h3>
+            <div id="recognized-text">Waiting for gesture input...</div>
+        </div>
+    </div>
+
+    <script src="index.js"></script> <!-- Linking index.js -->
+    <script>
+        // Adding event listener for the "Run Final Prediction" button
+        document.getElementById('run-final-pred-btn').addEventListener('click', function() {
+            // Sending request to Flask server
+            fetch('http://127.0.0.1:5000/final_pred') // Correct URL with port 5000
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json(); // Assuming the server returns JSON
+                })
+                .then(data => {
+                    console.log('Prediction:', data); // Handle response from Flask server
+                    document.getElementById('recognized-text').innerText = data.prediction || 'No prediction';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('recognized-text').innerText = 'Error fetching prediction';
+                });
+        });
+    </script>
+</body>
+</html>
