@@ -1,0 +1,206 @@
+/* Importing custom fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Quicksand:wght@300;400;500&family=Roboto:wght@400;500&display=swap');
+/* 'Orbitron' for headers (futuristic), 'Quicksand' for body and subheaders (rounded, clean), 'Roboto' for form text (sleek and legible) */
+
+/* Reset all styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body setup */
+body {
+    background: #1e1e1e; /* Deep background for contrast */
+    color: #E0E0E0; /* Light gray text for readability */
+    font-family: 'Roboto', sans-serif; /* Sleek, simple font for general text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure it takes up the full screen */
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    flex-direction: column; /* Vertical stacking of elements */
+}
+
+/* Background video settings */
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure the video stays behind the content */
+}
+
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the video covers the entire screen */
+}
+
+/* Container setup with no effects, no background */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    background: transparent; /* No background color */
+    border-radius: 15px;
+    box-shadow: none; /* Removed any box shadow */
+    opacity: 1; /* No opacity effect */
+    min-width: 350px;
+    text-align: center;
+    z-index: 1;
+    flex: 1; /* Allow the container to grow and fill available space */
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Video Section */
+.video-section {
+    width: 480px; /* Fixed width */
+    height: 360px; /* Fixed height */
+    margin-top: 20px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 3px solid #00E5FF; /* Cyan border */
+}
+
+#gesture-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video scales properly within its container */
+    border-radius: 15px;
+}
+
+/* Video container does not scale on hover */
+.video-section:hover #gesture-video {
+    transform: none;
+}
+
+/* Header style with Orbitron font */
+header h1 {
+    font-family: 'Orbitron', sans-serif; /* Futuristic, bold font for header */
+    font-size: 4.5rem; /* Larger font size for prominence */
+    color: #00E5FF; /* Bright cyan text */
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 6px; /* Increased letter spacing */
+    margin-bottom: 20px;
+}
+
+/* Subtitle using Quicksand font */
+header p {
+    font-size: 1.6rem; /* Slightly larger font */
+    color: rgba(255, 255, 255, 0.9); /* Light gray color */
+    font-family: 'Quicksand', sans-serif; /* Rounded, clean font for body text */
+    font-weight: 400;
+    margin-bottom: 25px;
+    letter-spacing: 2px; /* Space between characters */
+}
+
+/* Button styling */
+button {
+    padding: 14px 40px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border: 2px solid #00E5FF; /* Cyan border */
+    border-radius: 30px;
+    background: transparent;
+    color: #00E5FF; /* Cyan text */
+    text-transform: uppercase;
+    font-family: 'Quicksand', sans-serif; /* Quicksand for buttons for a sleek look */
+    font-weight: 500;
+    letter-spacing: 1px; /* Letter spacing for readability */
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #00E5FF; /* Cyan background */
+    color: #121212; /* Dark text for contrast */
+}
+
+/* Stop button with distinct hover effects */
+#stop-btn {
+    border: 2px solid #FF4081; /* Light pink border for stop button */
+    color: #FF4081; /* Light pink text */
+}
+
+#stop-btn:hover {
+    background-color: #FF4081; /* Light pink background */
+    color: #121212; /* Dark text */
+}
+
+/* Controls section */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Larger gap between buttons */
+    margin-top: 30px;
+}
+
+/* Section that holds the output */
+.output-section {
+    margin-top: 40px;
+    padding: 25px;
+    background-color: #121212; /* Solid black background */
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7); /* Sharp shadow effect */
+    width: 100%;
+    max-width: 700px;
+}
+
+.output-section h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    font-family: 'Quicksand', sans-serif; /* Clean and rounded font for headings */
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+}
+
+/* Recognized text with Space Mono font */
+#recognized-text {
+    font-family: 'Space Mono', monospace; /* Techy, digital-style font for recognized text */
+    font-size: 2.5rem;
+    color: #00E5FF; /* Cyan color for recognized text */
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 30px;
+    }
+
+    header h1 {
+        font-size: 3rem; /* Smaller font size on mobile */
+    }
+
+    header p {
+        font-size: 1.1rem; /* Smaller subtitle font */
+    }
+
+    button {
+        font-size: 1.2rem;
+        padding: 12px 35px;
+    }
+
+    #recognized-text {
+        font-size: 1.8rem; /* Smaller text on mobile */
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 15px; /* Stacked buttons */
+    }
+}
