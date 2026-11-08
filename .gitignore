@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Spark output and local data artifacts
+spark-warehouse/
+metastore_db/
+derby.log/
+checkpoint/
+checkpoints/
+exports/
+output/
+outputs/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Archives
+*.zip
